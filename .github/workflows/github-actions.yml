@@ -1,1 +1,16 @@
-
+name: Coinbox Test
+run-name: ${{github.actor}} is running tests
+on: push
+jobs:
+    Install-Dependencies:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Installing dependencies"
+            - run: pip install -r requirements.txt
+    Run-All-Tests:
+        runs-on: ubuntu-latest
+        steps:
+            - run: echo "Running tests"\
+            - run: cd src
+            - run: coverage run -m unittest
+            - run: coverage report
